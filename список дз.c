@@ -161,17 +161,13 @@ int main(void){
 
 
     DelitingListElements(list);
+    
     printf("lenght = %d\n", LengthList(list));
     PrintList(list);
-
-
-
-
-
-
 
 
     free(list);
     return 0;
 }
+
 
