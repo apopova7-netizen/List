@@ -116,6 +116,35 @@ void Append(LIST* list, int key, float value) {
 
 }
 
+void Reverse(LIST* list) {
+    int len = LengthList(list);
+
+    if (len > 1) {
+        LIST* ptr1 = list;
+        LIST* ptr2;
+
+        int step = len - 1;
+        for (int i =0; i < len/2; i++) {
+            ptr2 = ptr1;
+
+            for (int j = 0; j < step; j++)
+                ptr2 = ptr2 -> next;
+
+            LIST* tmp;
+            tmp = ptr1 -> next;
+            ptr1 -> next = ptr2 -> next;
+            ptr2 -> next = tmp;
+
+            tmp = ptr1 -> next -> next;
+            ptr1 -> next -> next = ptr2 -> next -> next;
+            ptr2 -> next -> next = tmp;
+
+            step-=2;
+            ptr1 = ptr1 -> next;
+        }
+    }
+}
+
 int main(void){
     LIST* list = CreateList();
 
@@ -161,13 +190,32 @@ int main(void){
 
 
     DelitingListElements(list);
-    
     printf("lenght = %d\n", LengthList(list));
     PrintList(list);
 
+    Push(list,1,23);
+    Push(list,2,2);
+    Push(list,3,41);
+    Push(list,4,15);
+    Push(list,5,23);
+    Push(list,6,2);
+    Push(list,7,41);
+    Push(list,8,15);
+    Push(list,9,10);
+
+
+    printf("lenght = %d\n", LengthList(list));
+    PrintList(list);
+
+    Reverse(list);
+    printf("lenght = %d\n", LengthList(list));
+    PrintList(list);
+
+    DelitingListElements(list);
+    printf("lenght = %d\n", LengthList(list));
+    PrintList(list);
 
     free(list);
     return 0;
 }
-
 
