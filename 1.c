@@ -84,7 +84,7 @@ void DelRear(QUEUE* q) {
     free(del);
 }
 
-void DelByKey(QUEUE* q, int key, int dir) { //dir: 0 - front, 1 - rear)
+void DelByKey(QUEUE* q, int key, int dir) { //dir: 0 - front, 1 - rear
     if (IsEmptyQueue(q))
         return;
     DLLIST* cur;
@@ -182,3 +182,4 @@ int main(void) {
     Print(q);
     free(q);
 }
+
